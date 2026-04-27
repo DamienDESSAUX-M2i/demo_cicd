@@ -3,7 +3,7 @@ name: artifact
 on: push
 
 jobs:
-  job-1:
+  upload:
     name: Job 1
     runs-on: ubuntu-latest
     steps:
@@ -18,3 +18,14 @@ jobs:
         with:
           name: mon_app
           path: dist
+
+  download:
+    runs-on: ubuntu-latest
+    needs: upload
+    steps:
+      - name: download artifact
+        uses: actions/download-artifact@v8
+        with:
+          name: mon_app
+      - name: list files
+        run: ls

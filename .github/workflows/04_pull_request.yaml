@@ -9,4 +9,4 @@ jobs:
   example:
     runs-on: ubuntu-latest
     steps:
-      -run: echo "Pull-Request!"
+      - run: echo "Pull-Request!"
