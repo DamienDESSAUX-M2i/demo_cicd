@@ -7,7 +7,7 @@ on:
 jobs:
   job1:
     name: 07_call
-    uses: DamienDESSAUX-M2i/demo_cicd/.github/workflows/07_outputs.yaml
+    uses: DamienDESSAUX-M2i/demo_cicd/.github/workflows/07_outputs.yaml@main
 
   jobs2:
     name: job2
