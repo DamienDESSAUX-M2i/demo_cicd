@@ -1,0 +1,20 @@
+# Nom du workflow
+name: First WorkFlow
+
+# Déclancheur du workflow
+on: workflow_dispatch
+
+# Actions réalisées au déclanchement du workflow
+jobs:
+  # Définition de l'action 1
+  job-1:
+    name: First job
+    # Définition du système d'exploitation
+    runs-on: ubuntu-latest
+    # Définition des étapes de notre action
+    steps:
+      # On donne un nom à notre étape puis notre commande
+      - name: Say Hello
+        run: echo "Hello World!"
+      - name: Say Goodbye
+        run: echo "Goodbye!"
