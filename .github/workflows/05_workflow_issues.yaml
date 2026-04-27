@@ -1,0 +1,15 @@
+name: issues
+
+on:
+  issues:
+    types: opened
+
+jobs:
+  commentaire:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - run: gh issue comment ${{ github.event.issue.html_url }} --body "thx"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
