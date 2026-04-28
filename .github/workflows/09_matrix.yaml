@@ -1,0 +1,34 @@
+name: matrix
+
+on:
+  - push
+
+jobs:
+  test_matrix:
+    name: test_node_${{ matrix.node-version }}_${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false  # false permet de continuer les autres tests même si l'un d'entre eux échoue
+      matrix:
+        node_version: [16, 18, 20]
+        os: ["ubuntu-latest", "windows-latest", "macos-latest"]
+
+    steps:
+      - name: checkout_repository
+        uses: actions/checkout@v6
+
+      - name: set_up_node_${{ matrix.node-version }}
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      
+      - name: install_dependencies
+        run: npm ci
+
+      - name: build_application
+        run: npm run build
+
+      - name: run_test
+        run: npm run test
